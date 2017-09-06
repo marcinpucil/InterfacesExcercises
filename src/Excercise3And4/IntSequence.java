@@ -1,6 +1,7 @@
-package Excercise3;
+package Excercise3And4;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class IntSequence {
 
@@ -15,5 +16,9 @@ class IntSequence {
                         '}';
             }
         };
+    }
+
+    static int[] constant(int i) {
+        return IntStream.iterate(i, operand -> operand).limit(100).toArray();
     }
 }
