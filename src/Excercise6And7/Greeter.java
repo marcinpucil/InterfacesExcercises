@@ -1,4 +1,7 @@
-package Excercise6;
+package Excercise6And7;
+
+
+import java.util.stream.Stream;
 
 public class Greeter implements Runnable {
 
@@ -17,5 +20,14 @@ public class Greeter implements Runnable {
                 System.out.println("Witaj " + target);
             }
         }).start();
+    }
+
+
+    public static void runTogether(Runnable... tasks) {
+        Stream.of(tasks).forEach(runnable -> new Thread(runnable).run());
+    }
+
+    public static void runInOrder(Runnable... tasks) {
+        Stream.of(tasks).forEach(Runnable::run);
     }
 }
