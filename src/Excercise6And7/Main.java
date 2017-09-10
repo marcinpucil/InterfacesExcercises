@@ -19,23 +19,20 @@ public class Main {
         Main main = new Main();
 
         Stream.of(main.getSubdirectories1("D:\\nauka programowania")).forEach(file -> System.out.println(file.getAbsoluteFile()));
-        System.out.println(main.getSubdirectories1("D:\\nauka programowania"));
+        Stream.of(main.getSubdirectories2("D:\\nauka programowania")).forEach(file -> System.out.println(file.getAbsoluteFile()));
     }
 
-    public File[] getSubdirectories2(String dirAddress) {
-        File file = new File(dirAddress);
-        if (file.isDirectory()) return file.listFiles();
-        else return null;
+    File[] getSubdirectories2(String dirAddress) {
+        return new File(dirAddress).listFiles(File::isDirectory);
     }
 
-    public File[] getSubdirectories1(String dirAddress) {
-        File[] file = new File(dirAddress).listFiles(new FileFilter() {
+    File[] getSubdirectories1(String dirAddress) {
+        return new File(dirAddress).listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
                 return pathname.isDirectory();
             }
         });
-        return file;
     }
 
 }
