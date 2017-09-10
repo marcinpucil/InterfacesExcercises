@@ -9,13 +9,17 @@ package Excercise6And7;
 
 
 import java.io.File;
+import java.io.FileFilter;
+import java.util.stream.Stream;
 
 public class Main {
 
 
-    public File[] getSubdirectories1(String dirAddress) {
+    public static void main(String[] args) {
+        Main main = new Main();
 
-        return null;
+        Stream.of(main.getSubdirectories1("D:\\nauka programowania")).forEach(file -> System.out.println(file.getAbsoluteFile()));
+        System.out.println(main.getSubdirectories1("D:\\nauka programowania"));
     }
 
     public File[] getSubdirectories2(String dirAddress) {
@@ -24,9 +28,14 @@ public class Main {
         else return null;
     }
 
-
-    public static void main(String[] args) {
-
+    public File[] getSubdirectories1(String dirAddress) {
+        File[] file = new File(dirAddress).listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                return pathname.isDirectory();
+            }
+        });
+        return file;
     }
 
 }
