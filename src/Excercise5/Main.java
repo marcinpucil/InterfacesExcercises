@@ -14,8 +14,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Main {
-
-
     void luckySort(ArrayList<String> strings, Comparator<String> comp) {
         ArrayList<String> strings1 = new ArrayList<>(strings);
         strings1.sort(comp);
@@ -26,8 +24,6 @@ public class Main {
         }
         System.out.println("Wykonano ileracji:" + i);
     }
-
-
     public static void main(String[] args) {
         Main main = new Main();
         ArrayList<String> strings = new ArrayList<>();
@@ -37,6 +33,7 @@ public class Main {
         strings.add("a");
         strings.add("dziala");
         main.luckySort(strings, Comparator.naturalOrder());
+
 
     }
 }
