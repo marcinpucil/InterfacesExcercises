@@ -42,14 +42,14 @@ public class Main {
         Stream.of(main.getSubdirectories2("D:\\nauka programowania")).forEach(file -> System.out.println(file.getAbsoluteFile()));
         System.out.println("");
         Arrays.stream(main.getFilesByExtension("D:\\nauka programowania", ".txt")).forEach(file -> System.out.println(file.getAbsoluteFile()));
+        Arrays.stream(main.getFilesSortedByNaturalOrder("D:\\nauka programowania")).forEach(file -> System.out.println(file.getAbsoluteFile()));
     }
-
     public File[] getFilesByExtension(String direction, String extension) {
         return new File(direction).listFiles(pathname -> pathname.getName().endsWith(extension));
     }
 
-    public File[] getFilesSortedByNaturalOrder() {
-        File[] files = getSubdirectories1("D:\\nauka programowania");
-        return (File[]) Arrays.stream(files).sorted(Comparator.comparing(File::getName)).toArray();
+    public File[] getFilesSortedByNaturalOrder(String direction) {
+        File[] files = getSubdirectories1(direction);
+        return Arrays.stream(files).sorted((Comparator.comparing(File::getName))).toArray(File[]::new);
     }
 }
