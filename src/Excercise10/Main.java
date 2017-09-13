@@ -22,6 +22,8 @@ public class Main {
     }
 
     RandomSequence randomInts(int low, int high) {
+        this.low = low;
+        this.high = high;
         return new RandomSequence();
     }
 
